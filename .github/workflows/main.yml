@@ -14,6 +14,7 @@ jobs:
   compilar-y-probar:
     
     runs-on: ubuntu-latest
+    container: jchavarr/mono:latest
 
     steps:
       # descargue el proyecto
