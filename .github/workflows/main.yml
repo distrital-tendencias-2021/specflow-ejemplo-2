@@ -1,0 +1,36 @@
+
+# Nombre que aparece en Github
+name: Compila y Prueba la aplicación
+
+# Cuando se ejecuta
+on:
+  push:
+    branches: [ main ]   # al hacer push en la rama main
+  workflow_dispatch:     # cuando se presione un botón en Github
+
+
+jobs:
+  # nombre de la tarea
+  compilar-y-probar:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      # descargue el proyecto
+      - name: Descarga el proyecto
+        uses: actions/checkout@v2
+
+      # instalar .Net 3.1.x
+      - name: Instala .NET SDK 3.1.x
+        uses: actions/setup-dotnet@v1.8.2
+        with:
+          dotnet-version: '3.1.x'
+          
+      # compilar
+      - name: Compila el programa
+        run: dotnet build
+        
+      # ejecuta pruebas
+      - name: Ejecuta pruebas
+        run: dotnet test
+      - name: 
